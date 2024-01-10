@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:movie_clean/movies/data/datasource/movies_remote_datasource.dart';
+import 'package:movie_clean/movies/data/repos/base_repo.dart';
+import 'package:movie_clean/movies/domain/repos/Ibase_repo.dart';
+import 'package:movie_clean/movies/domain/usecase/get_top_rated_usecase.dart';
 
 void main() {
+  INetworkMovies m = NetworkMovies();
+  IBaseRepo b = BaseRepo(m);
+  GetTopRatedUseCase(b);
   runApp(const MyApp());
 }
 

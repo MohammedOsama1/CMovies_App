@@ -6,6 +6,6 @@ class GetNowPlayingUseCase {
   GetNowPlayingUseCase(this.baseRepo);
 
   execute() {
-    baseRepo.getNowPlaying();
+    return baseRepo.getNowPlaying();
   }
 }
