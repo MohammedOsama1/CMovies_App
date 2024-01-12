@@ -10,8 +10,8 @@ class BaseRepo extends IBaseRepo {
   BaseRepo(this._iNetworkMovies);
 
   @override
-  Either<MyError, Future<List<Movie>>> getNowPlaying() {
-    final result = _iNetworkMovies.getNowPlaying();
+  Future<Either<MyError, List<Movie>>> getNowPlaying() async  {
+    final result = await _iNetworkMovies.getNowPlaying();
     try {
       return Right(result);
     } on MyError catch (e) {
@@ -20,8 +20,8 @@ class BaseRepo extends IBaseRepo {
   }
 
   @override
-  Either<MyError, Future<List<Movie>>> getPopularMovies() {
-    final result = _iNetworkMovies.getPopularMovies();
+  Future<Either<MyError, List<Movie>>> getPopularMovies()async {
+    final result = await _iNetworkMovies.getPopularMovies();
     try {
       return Right(result);
     } on MyError catch (e) {
@@ -30,8 +30,8 @@ class BaseRepo extends IBaseRepo {
   }
 
   @override
-  Either<MyError, Future<List<Movie>>> getTopRatedMovies() {
-    final result = _iNetworkMovies.getTopRatedMovies();
+  Future<Either<MyError, List<Movie>>> getTopRatedMovies() async {
+    final result = await _iNetworkMovies.getTopRatedMovies();
     try {
       return Right(result);
     } on MyError catch (e) {
