@@ -37,6 +37,12 @@ dependencies:
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
   http: any
+  get_it: any
+  cached_network_image:
+  carousel_slider:
+  animate_do:
+  google_fonts:
+  shimmer:
 
 dev_dependencies:
   flutter_test:
