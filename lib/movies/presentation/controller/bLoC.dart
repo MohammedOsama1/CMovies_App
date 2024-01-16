@@ -9,15 +9,16 @@ class MoviesbLoC extends Bloc<MoviesEvent, MoviesStates> {
 
   MoviesbLoC(this.baseRepo)
       : super(const MoviesStates(
-            listOfMovies: [], currentState: AppStates.loading)) {
+            nowPlayingList: [], nowPlayingState: AppStates.loading)) {
     on<GetNowPlayingEvent>((event, emit) async {
       final result = await GetNowPlayingUseCase(baseRepo).execute();
       print(result);
       result.fold(
           (l) => emit(const MoviesStates(
-                currentState: AppStates.error,
+                nowPlayingState: AppStates.error,
               )), (r) {
-        emit(MoviesStates(currentState: AppStates.loaded, listOfMovies: r));
+        emit(MoviesStates(
+            nowPlayingState: AppStates.suc, nowPlayingList: r));
       });
     });
   }

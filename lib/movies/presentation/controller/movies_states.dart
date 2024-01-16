@@ -3,12 +3,20 @@ import 'package:movie_clean/movies/domain/entity/movie.dart';
 
 @immutable
 class MoviesStates {
-  final List<Movie> listOfMovies;
+  final List<Movie> nowPlayingList;
 
-  final AppStates currentState;
+  final AppStates nowPlayingState;
 
-  const MoviesStates(
-      {this.currentState = AppStates.loading,  this.listOfMovies =  const [] });
+  final List<Movie> slider1List;
+
+  final AppStates slider1State;
+
+  const MoviesStates({
+    this.nowPlayingState = AppStates.loading,
+    this.nowPlayingList = const [],
+    this.slider1List = const [],
+    this.slider1State = AppStates.loading,
+  });
 }
 
-enum AppStates { loading, loaded, suc, error }
+enum AppStates { loading, suc, error }
