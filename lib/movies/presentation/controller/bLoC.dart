@@ -12,15 +12,18 @@ class MoviesbLoC extends Bloc<MoviesEvent, MoviesStates> {
   MoviesbLoC(this.baseRepo) : super(const MoviesStates(
             nowPlayingList: [], nowPlayingState: AppStates.loading)) {
     on<GetNowPlayingEvent>(_playingEvent);
-    on<GetTopRatedEvent>((event, emit) async {
-      final result = await GetTopRatedUseCase(baseRepo).call();
-      result.fold(
-              (l) => emit(const MoviesStates(
-            nowPlayingState: AppStates.error,
-          )), (r) {
-        emit(MoviesStates(
-            nowPlayingState: AppStates.suc, nowPlayingList: r));
-      });
+    on<GetTopRatedEvent>(_topRatedEvent);
+
+  }
+
+  FutureOr<void> _topRatedEvent(event,  emit) async {
+    final result = await GetTopRatedUseCase(baseRepo).call();
+    result.fold(
+            (l) => emit(state.copyWith(
+              topRatedState: AppStates.error,
+        )), (r) {
+      emit(state.copyWith(
+          topRatedState: AppStates.suc, topRatedList: r));
     });
   }
 
@@ -28,10 +31,10 @@ class MoviesbLoC extends Bloc<MoviesEvent, MoviesStates> {
     final result = await GetNowPlayingUseCase(baseRepo).execute();
     print(result);
     result.fold(
-        (l) => emit(const MoviesStates(
+        (l) => emit(state.copyWith(
               nowPlayingState: AppStates.error,
             )), (r) {
-      emit(MoviesStates(
+      emit(state.copyWith(
           nowPlayingState: AppStates.suc, nowPlayingList: r));
     });
   }

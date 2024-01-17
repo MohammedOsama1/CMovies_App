@@ -22,8 +22,11 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: BlocProvider(
-          create: (BuildContext context) =>
-              sl<MoviesbLoC>()..add(GetNowPlayingEvent()),
+          create: (BuildContext context) {
+            return sl<MoviesbLoC>()
+              ..add(GetNowPlayingEvent())
+              ..add(GetTopRatedEvent());
+          },
           child: const MainMoviesScreen()),
     );
   }
