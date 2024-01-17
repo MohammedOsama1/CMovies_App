@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:movie_clean/movies/core/end_points.dart';
 import 'package:movie_clean/movies/presentation/controller/bLoC.dart';
 import 'package:movie_clean/movies/presentation/controller/movies_states.dart';
-import 'package:movie_clean/movies/presentation/screens/dummy.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NowPlayingComponent extends StatelessWidget {
@@ -15,7 +14,6 @@ class NowPlayingComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesbLoC, MoviesStates>(builder: (context, state) {
       switch(state.nowPlayingState){
-
         case AppStates.loading:
           return const SizedBox(height: 400.0,child: Center(child: CircularProgressIndicator()));
         case AppStates.suc:
