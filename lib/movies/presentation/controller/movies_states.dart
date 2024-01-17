@@ -7,14 +7,14 @@ class MoviesStates {
 
   final AppStates nowPlayingState;
 
-  final List<Movie> slider1List;
+  final List<Movie> TopRatedList;
 
   final AppStates slider1State;
 
   const MoviesStates({
     this.nowPlayingState = AppStates.loading,
     this.nowPlayingList = const [],
-    this.slider1List = const [],
+    this.TopRatedList = const [],
     this.slider1State = AppStates.loading,
   });
 }

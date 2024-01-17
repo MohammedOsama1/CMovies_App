@@ -5,7 +5,8 @@ class GetTopRatedUseCase {
 
   GetTopRatedUseCase(this.baseRepo);
 
-  execute(){
+
+  call(){
     return baseRepo.getTopRatedMovies();
   }
 }
